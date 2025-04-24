@@ -9,22 +9,17 @@ function Navbar()
             <nav className='navbar'>
                 <div className='navbar-container'>
                     <Link to='/' className='navbar-logo'>
-                        <img alt="Home" src="" />
+                        PeerView
                     </Link>
                     <ul className='nav-menu'> 
                         <li className='nav-item'>
                             <Link to='/' className='nav-links'>  
-                                <img alt="Nav1" src="" />
+                                Sign Up
                             </Link>
                         </li>
                         <li className='nav-item'>
                             <Link to='/' className='nav-links'>  
-                                <img alt="Nav2" src="" />
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/' className='nav-links'>  
-                                <img alt="Nav3" src="" />
+                                About Us
                             </Link>
                         </li>
                     </ul>
