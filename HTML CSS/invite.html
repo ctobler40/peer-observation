@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PeerView - Send Invites</title>
+  <link rel="stylesheet" href="peerview-styles.css"> <!-- Link to external CSS -->
+  <style>
+    /* Page-specific small tweaks */
+    .invite-form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    .invite-form input,
+    .invite-form select {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .invite-form button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="home.html">
+          <img src="iowa logo.svg" alt="Iowa Logo">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href = "home.html">Home</a></li>
+          <li><a href = "connections.html">Connections</a></li>
+          <li><a href = "messages.html">Messages</a></li>
+          <li><Strong><a href = "invite.html">Send Invites</a></Strong></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="settings">
+      <button class="schedule-btn">Settings</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- you might have to put functional code here -->
+    <div class="header">
+      <span>layiwola &#9662;</span>
+    </div>
+
+    <!-- Send Invite Content -->
+    <div class="content-section">
+      <h3>Send an Invite</h3>
+
+      <form class="invite-form">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+
+        <select required>
+          <option value="">Select Role</option>
+          <option value="Student">Student</option>
+          <option value="TA">Teaching Assistant</option>
+          <option value="Professor">Professor</option>
+          <option value="Staff">Staff</option>
+        </select>
+
+        <button type="submit">Send Invite</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
