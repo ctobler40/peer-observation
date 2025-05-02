@@ -14,12 +14,12 @@ function Navbar()
                     <ul className='nav-menu'> 
                         <li className='nav-item'>
                             <Link to='/' className='nav-links'>  
-                                Sign Up
+                                Sign up
                             </Link>
                         </li>
                         <li className='nav-item'>
                             <Link to='/' className='nav-links'>  
-                                About Us
+                                About us
                             </Link>
                         </li>
                     </ul>
