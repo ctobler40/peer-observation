@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PeerView - Send Invites</title>
+  <link rel="stylesheet" href="peerview-styles.css"> <!-- Link to external CSS -->
+  <style>
+    /* Page-specific small tweaks */
+    .invite-form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    .invite-form input,
+    .invite-form select {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .invite-form button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="home.html">
+          <img src="iowa logo.svg" alt="Iowa Logo">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href = "home.html">Home</a></li>
+          <li><a href = "connections.html">Connections</a></li>
+          <li><a href = "messages.html">Messages</a></li>
+          <li><Strong><a href = "invite.html">Send Invites</a></Strong></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="settings">
+      <button class="schedule-btn"><a href="settings.html">Settings</a></button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- you might have to put functional code here -->
+    <div class="header">
+      <div class="user-dropdown">
+        <button onclick="toggleUserMenu()">layiwola &#9662;</button>
+        <div id="user-menu" class="dropdown-menu" style="display: none;">
+          <a href="account.html">Account</a>
+          <a href="signout.html">Sign Out</a>
+        </div>
+      </div>
+    </div>   
+
+    <!-- Send Invite Content -->
+    <div class="content-section">
+      <h3 style="margin-left:2.5%; margin-top: 2.5%;">Send an Invite</h3>
+
+      <form class="invite-form">
+        <input type="text" placeholder="Full Name" style="margin-left:2.5%; margin-right: 2.5%;" required>
+        <input type="email" placeholder="Email Address" style="margin-left:2.5%; margin-right: 2.5%;" required>
+
+        <select style="margin-left:2.5%; margin-right: 2.5%;" required>
+          <option value="">Select Role</option>
+          <option value="Student">Student</option>
+          <option value="TA">Teaching Assistant</option>
+          <option value="Professor">Professor</option>
+          <option value="Staff">Staff</option>
+        </select>
+
+        <button type="submit" style="margin-left:2.5%; margin-right: 2.5%;">Send Invite</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+<script>
+  // Dropdown when clicking on profile
+  function toggleUserMenu() {
+    const menu = document.getElementById("user-menu");
+    menu.style.display = menu.style.display === "none" ? "block" : "none";
+  }
+
+  // Clicking anywhere outside will close dropdown
+  document.addEventListener("click", function(event) {
+    const dropdown = document.getElementById("user-menu");
+    const button = event.target.closest(".user-dropdown");
+
+    if (!button) {
+      dropdown.style.display = "none";
+    }
+  });
+</script>
+</html>

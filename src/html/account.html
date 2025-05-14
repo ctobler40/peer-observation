@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PeerView - Settings</title>
+  <link rel="stylesheet" href="peerview-styles.css"> <!-- Link to external CSS -->
+  <style>
+    .sidebar nav ul li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .sidebar nav ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="home.html">
+          <img src="iowa logo.svg" alt="Iowa Logo">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><strong><a href="home.html">Home</a></strong></li>
+          <li><a href="connections.html">Connections</a></li>
+          <li><a href="messages.html">Messages</a></li>
+          <li><a href="invite.html">Send Invites</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="settings">
+      <button class="schedule-btn"><a href="settings.html">Settings</a></button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- you might have to put functional code here -->
+    <div class="header">
+      <div class="user-dropdown">
+        <button onclick="toggleUserMenu()">layiwola &#9662;</button>
+        <div id="user-menu" class="dropdown-menu" style="display: none;">
+          <a href="account.html">Account</a>
+          <a href="signout.html">Sign Out</a>
+        </div>
+      </div>
+    </div>    
+
+    <!-- Content Area -->
+    <div class="content">
+      <!-- Account Settings -->
+      <div class="settings-section">
+        <h3>Account</h3>
+
+        <!-- Display Name -->
+        <label for="account-name">Display Name</label>
+        <input type="text" id="account-name" placeholder="layiwola">
+
+        <!-- Email Address -->
+        <label for="account-email">Email</label>
+        <input type="email" id="account-email" placeholder="you@uiowa.edu">
+
+        <!-- Password Change -->
+        <div class="toggle-row">
+          <span>Require login every 30 days</span>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <span>Enable Two-Factor Authentication (2FA)</span>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Public Profile Toggle -->
+        <div class="toggle-row">
+          <span>Make profile public</span>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Save Button -->
+        <button class="settings-btn">Save Changes</button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+<script>
+  // Dropdown when clicking on profile
+  function toggleUserMenu() {
+    const menu = document.getElementById("user-menu");
+    menu.style.display = menu.style.display === "none" ? "block" : "none";
+  }
+
+  // Clicking anywhere outside will close dropdown
+  document.addEventListener("click", function(event) {
+    const dropdown = document.getElementById("user-menu");
+    const button = event.target.closest(".user-dropdown");
+
+    if (!button) {
+      dropdown.style.display = "none";
+    }
+  });
+</script>
+</html>

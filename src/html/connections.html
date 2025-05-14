@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PeerView - Connections</title>
+  <link rel="stylesheet" href="peerview-styles.css"> <!-- Linking external CSS -->
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="home.html">
+          <img src="iowa logo.svg" alt="Iowa Logo">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href = "home.html">Home</a></li>
+          <li><Strong><a href = "connections.html">Connections</a></Strong></li>
+          <li><a href = "messages.html">Messages</a></li>
+          <li><a href = "invite.html">Send Invites</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="settings">
+      <button class="schedule-btn"><a href="settings.html">Settings</a></button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- you might have to put functional code here -->
+    <div class="header">
+      <div class="user-dropdown">
+        <button onclick="toggleUserMenu()">layiwola &#9662;</button>
+        <div id="user-menu" class="dropdown-menu" style="display: none;">
+          <a href="account.html">Account</a>
+          <a href="signout.html">Sign Out</a>
+        </div>
+      </div>
+    </div>   
+
+    <!-- Content Area -->
+    <div class="content">
+      <div class="observations-header">
+        <h3>Connections</h3>
+        <div class="schedule-container">
+          <button class="schedule-btn" onclick="toggleConnectionDropdown()">New Connection &#9662;</button>
+          <div id="connection-dropdown" class="dropdown-modal" style="display: none;">
+            <div class="dropdown-content">
+              <span class="close-btn" onclick="toggleConnectionDropdown()">✕</span>
+        
+              <label for="name">Name:</label>
+              <input type="text" id="conn-name" placeholder="Enter full name">
+        
+              <label for="role">Role:</label>
+              <select id="conn-role">
+                <option>TA</option>
+                <option>Professor</option>
+                <option>Graduate Student</option>
+                <option>Staff</option>
+              </select>
+        
+              <label for="college">College:</label>
+              <input type="text" id="conn-college" placeholder="Enter college">
+        
+              <label for="email">Email:</label>
+              <input type="email" id="conn-email" placeholder="example@uiowa.edu">
+        
+              <button class="submit-btn" onclick="submitConnection()">Add Connection</button>
+            </div>
+          </div>
+        </div>        
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search connections...">
+      </div>
+
+      <!-- List of connections -->
+      <div class="observation">
+        <h4>James Cameron</h4>
+        <p>TA | College of Education</p>
+        <small>james-cam@uiowa.edu</small>
+      </div>
+
+      <div class="observation">
+        <h4>Lucas Ambrose</h4>
+        <p>Professor | College of Business</p>
+        <small>lucas-ambrose@uiowa.edu</small>
+      </div>
+
+      <div class="observation">
+        <h4>Anna Watanabe</h4>
+        <p>Graduate Student | College of Engineering</p>
+        <small>anna-w@uiowa.edu</small>
+      </div>
+
+      <div class="observation">
+        <h4>Emily Vargas</h4>
+        <p>TA | College of Liberal Arts</p>
+        <small>emily-vargas@uiowa.edu</small>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  function toggleConnectionDropdown() {
+    const dropdown = document.getElementById("connection-dropdown");
+    dropdown.style.display = dropdown.style.display === "none" ? "flex" : "none";
+  }
+
+  function submitConnection() {
+    const name = document.getElementById("conn-name").value;
+    const role = document.getElementById("conn-role").value;
+    const college = document.getElementById("conn-college").value;
+    const email = document.getElementById("conn-email").value;
+
+    if (!name || !role || !college || !email) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    alert(`New connection added:\n${name} - ${role} | ${college}\n${email}`);
+    toggleConnectionDropdown();
+  }
+
+  // Dropdown when clicking on profile
+  function toggleUserMenu() {
+    const menu = document.getElementById("user-menu");
+    menu.style.display = menu.style.display === "none" ? "block" : "none";
+  }
+
+  // Clicking anywhere outside will close dropdown
+  document.addEventListener("click", function(event) {
+    const dropdown = document.getElementById("user-menu");
+    const button = event.target.closest(".user-dropdown");
+
+    if (!button) {
+      dropdown.style.display = "none";
+    }
+  });
+</script>
+</html>

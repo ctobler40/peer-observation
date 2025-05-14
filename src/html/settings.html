@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PeerView - Settings</title>
+  <link rel="stylesheet" href="peerview-styles.css"> <!-- Link to external CSS -->
+  <style>
+    .sidebar nav ul li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .sidebar nav ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="home.html">
+          <img src="iowa logo.svg" alt="Iowa Logo">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><strong><a href="home.html">Home</a></strong></li>
+          <li><a href="connections.html">Connections</a></li>
+          <li><a href="messages.html">Messages</a></li>
+          <li><a href="invite.html">Send Invites</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="settings">
+      <button class="schedule-btn"><a href="settings.html">Settings</a></button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- you might have to put functional code here -->
+    <div class="header">
+      <div class="user-dropdown">
+        <button onclick="toggleUserMenu()">layiwola &#9662;</button>
+        <div id="user-menu" class="dropdown-menu" style="display: none;">
+          <a href="account.html">Account</a>
+          <a href="signout.html">Sign Out</a>
+        </div>
+      </div>
+    </div>   
+
+    <!-- Content Area -->
+    <div class="content">
+      <h2>Settings</h2>
+      <br />
+    
+      <!-- Profile Settings -->
+      <div class="settings-section">
+        <h3>Profile</h3>
+        <label for="display-name">Display Name</label>
+        <input type="text" id="display-name" placeholder="layiwola">
+    
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@uiowa.edu">
+      </div>
+    
+      <!-- Notification Settings -->
+      <div class="settings-section">
+        <h3>Notifications</h3>
+        
+        <div class="toggle-row">
+          <span>Email notifications for new observations</span>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="toggle-row">
+          <span>Notify when feedback is posted</span>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    
+      <!-- Theme Toggle -->
+      <div class="settings-section">
+        <h3>Appearance</h3>
+        <label for="theme-select">Choose theme:</label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    
+      <!-- Password -->
+      <div class="settings-section">
+        <h3>Security</h3>
+        <button class="settings-btn">Change Password</button>
+        <button class="delete-btn">Delete Account</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  // Dropdown when clicking on profile
+  function toggleUserMenu() {
+    const menu = document.getElementById("user-menu");
+    menu.style.display = menu.style.display === "none" ? "block" : "none";
+  }
+
+  // Clicking anywhere outside will close dropdown
+  document.addEventListener("click", function(event) {
+    const dropdown = document.getElementById("user-menu");
+    const button = event.target.closest(".user-dropdown");
+
+    if (!button) {
+      dropdown.style.display = "none";
+    }
+  });
+</script>
+</html>

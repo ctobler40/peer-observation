@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PeerView - Home</title>
+  <link rel="stylesheet" href="peerview-styles.css"> <!-- Link to external CSS -->
+  <style>
+    .sidebar nav ul li a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .sidebar nav ul li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <div class="logo">
+        <a href="home.html">
+          <img src="iowa logo.svg" alt="Iowa Logo">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><strong><a href="home.html">Home</a></strong></li>
+          <li><a href="connections.html">Connections</a></li>
+          <li><a href="messages.html">Messages</a></li>
+          <li><a href="invite.html">Send Invites</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="settings">
+      <button class="schedule-btn"><a href="settings.html">Settings</a></button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- you might have to put functional code here -->
+    <div class="header">
+      <div class="user-dropdown">
+        <button onclick="toggleUserMenu()">layiwola &#9662;</button>
+        <div id="user-menu" class="dropdown-menu" style="display: none;">
+          <a href="account.html">Account</a>
+          <a href="signout.html">Sign Out</a>
+        </div>
+      </div>
+    </div>    
+
+    <!-- Status Banner -->
+    <div class="status-banner">
+      <img src="https://img.icons8.com/fluency-systems-regular/48/ok.png" alt="Check">
+      100 observations completed so far by your peers across your campus
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <!-- Observations Section -->
+      <div class="observations-header">
+        <h3>Observations</h3>
+        <!-- Dropdown for Scheduling -->
+        <div class="schedule-container">
+          <button class="schedule-btn" onclick="toggleDropdown()">Schedule Observation &#9662;</button>
+          <div id="schedule-dropdown" class="dropdown-modal" style="display: none;">
+            <div class="dropdown-content">
+              <span class="close-btn" onclick="toggleDropdown()">✕</span>
+              
+              <label for="course">Course:</label>
+              <select id="course">
+                <option>Human-Computer Interaction</option>
+                <option>Cybersecurity Fundamentals</option>
+                <option>Data Structures</option>
+              </select>
+          
+              <label for="date">Date:</label>
+              <input type="date" id="date">
+          
+              <label for="time">Time:</label>
+              <input type="time" id="time">
+          
+              <button class="submit-btn" onclick="submitSchedule()">Confirm</button>
+            </div>
+          </div>
+          
+        </div>  
+      </div>
+
+      <div class="tabs">
+        <button id="tab-upcoming" class="active" onclick="toggleObservations('upcoming')">Upcoming</button>
+        <button id="tab-past" onclick="toggleObservations('past')">Past</button>
+      </div>      
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search observations...">
+      </div>
+
+      <!-- Observations List (Upcoming) -->
+      <div id="observations-upcoming" class="observation-group">
+        <div class="observation">
+          <h4>Human-Computer Interaction</h4>
+          <p>CS:4510:0001 Spr25</p>
+          <small>Damson Idris (TA) - April 9 at 8:30am</small>
+        </div>
+
+        <div class="observation">
+          <h4>Cybersecurity Fundamentals</h4>
+          <p>CS:1580:0002 Spr25</p>
+          <small>Damson Idris (TA) - April 15 at 11:30am</small>
+        </div>
+      </div>
+
+      <!-- Observations List (Past) -->
+      <div id="observations-past" class="observation-group" style="display: none;">
+        <div class="observation">
+          <h4>Database Systems</h4>
+          <p>CS:4400:0001 Spr25</p>
+          <small>Maxwell Irvine (TA) - March 28 at 8:30am</small>
+        </div>
+
+        <div class="observation">
+          <h4>Introduction to Algorithms</h4>
+          <p>CS:3300:0001 Spr25</p>
+          <small>Carl Carlson (TA) - April 1 at 11:30am</small>
+        </div>
+      </div>
+
+      <!-- Feedback Section -->
+      <h3 style="margin-top: 30px; margin-bottom: 1%;">Recent Feedback</h3>
+
+      <div class="feedback-item">
+        <h4>Human-Computer Interaction</h4>
+        <p><small>15 mins ago</small></p>
+        <p>"I enjoyed sitting in and observing your classroom teaching style. Well-motivated classroom with great participation and active conversations."</p>
+        <small>- Damson Idris</small>
+      </div>
+
+      <div class="feedback-item">
+        <h4>Human-Computer Interaction</h4>
+        <p><small>Earlier</small></p>
+        <p>"Great student engagement and a positive learning environment."</p>
+        <small>- Peer Observer</small>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  function toggleDropdown() {
+    const dropdown = document.getElementById("schedule-dropdown");
+    dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+  }
+
+  function toggleObservations(displayType) {
+    const upcoming = document.getElementById("observations-upcoming");
+    const past = document.getElementById("observations-past");
+
+    const tabUpcoming = document.getElementById("tab-upcoming");
+    const tabPast = document.getElementById("tab-past");
+
+    if (displayType === "upcoming") {
+      upcoming.style.display = "block";
+      past.style.display = "none";
+
+      tabUpcoming.classList.add("active");
+      tabPast.classList.remove("active");
+    } else {
+      upcoming.style.display = "none";
+      past.style.display = "block";
+
+      tabUpcoming.classList.remove("active");
+      tabPast.classList.add("active");
+    }
+  }
+
+  function submitSchedule() {
+    const course = document.getElementById("course").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+
+    if (!course || !date || !time) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    alert(`Observation scheduled for ${course} on ${date} at ${time}`);
+    // You could send this to a backend here if needed
+    toggleDropdown();
+  }
+
+  // Dropdown when clicking on profile
+  function toggleUserMenu() {
+    const menu = document.getElementById("user-menu");
+    menu.style.display = menu.style.display === "none" ? "block" : "none";
+  }
+
+  // Clicking anywhere outside will close dropdown
+  document.addEventListener("click", function(event) {
+    const dropdown = document.getElementById("user-menu");
+    const button = event.target.closest(".user-dropdown");
+
+    if (!button) {
+      dropdown.style.display = "none";
+    }
+  });
+</script>
+</html>
